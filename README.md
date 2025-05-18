@@ -76,19 +76,31 @@ robot.
 Algorithm 1 Viterbi forward algorithm
 
 1: input: O, observation space O = {o1, o2,...,oN }.
+
 S, state space S = {s1,s2,...,sK } // Here, K refers to the traversable positions.Q, array of initial probabilities Q = (π1,π2,...,πK ) // Here, π1 = π2 =, ..., πK .
+
 Y, a sequence of observations Y = (y1,y2,...,yT ).
+
 Tm, transition matrix of size K x K.
+
 Em, emission matrix of size K x N.
+
 2: output: Trellis matrix
+
 3: for each position i = 1, 2, ..., K do
+
 4: trellis[i,1] ← πi * Emiy1
+
 5: end for
+
 6: for each observation j = 2, 3, ...T do
+
 7: for each state i = 1, 2, ...K do
-8: trellis[i,j] ← max
-k (trellis[k, j - 1] * T mki ∗ Emiyj ) // Here, k is the most likely
-prior positions and yj is the observation at time j.
+
+8: trellis[i,j] ← max k (trellis[k, j - 1] * T mki ∗ Emiyj ) // Here, k is the most likely prior positions and yj is the observation at time j.
+
 9: end for
+
 10: end for
+
 11: return trellis
